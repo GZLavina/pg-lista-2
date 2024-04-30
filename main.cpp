@@ -51,8 +51,12 @@ int main() {
         return -1;
     }
 
-    Shader shader("../shaders/HelloTriangle.vert", "../shaders/HelloTriangle.frag");
+    char path1[] = "../../shaders/HelloTriangle.vert";
+    char path2[] = "../../shaders/HelloTriangle.frag";
+    Shader shader(path1, path2);
 //    //Shader para triagulo colorido
+//    char path1[] = "../../shaders/HelloTriangle.vert";
+//    char path2[] = "../../shaders/ColoredTriangle.frag";
 //    Shader shader("../shaders/HelloTriangle.vert", "../shaders/ColoredTriangle.frag");
 
     // dois triangulos com borda e vertice
@@ -67,7 +71,7 @@ int main() {
     glm::mat4 projection = glm::ortho(-1.0,1.0,-1.0,1.0,-1.0,1.0);
 //    // Exercicio 1
 //    glm::mat4 projection = glm::ortho(-10.0f,10.0f,-10.0f,10.0f,-1.0f,1.0f);
-//    // Exercicio 2
+//    // Exercicios 2 e 3
 //    glm::mat4 projection = glm::ortho(0.0f,800.0f,0.0f,600.0f,-1.0f,1.0f);
     shader.setMat4("projection", glm::value_ptr(projection));
     // render loop
@@ -77,13 +81,15 @@ int main() {
 
         int width, height;
         glfwGetFramebufferSize(window, &width, &height);
-//        // Exercicios 1, 2 e 3
-//        glViewport(0, 0, width, height);
 
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
         glBindVertexArray(VAO);
+
+    //    // Exercicios 1, 2 e 3
+    //    glViewport(0, 0, width, height);
+    //    drawBasicTriangle(&shader);
 
         // Exercicios 4 e 5
         glViewport(0, 0, width/2, height/2);
